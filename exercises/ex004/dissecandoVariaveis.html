@@ -4,22 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dissecting Variables</title>
-    <style>
-        body {
-            font: normal 16pt arial;
-            background-color: antiquewhite;
-        }
-    </style>
+    
 </head>
 <body>
-    <h1>Dissecting Variables</h1>
-    <p>Type something: <input type="text" name="something" id="something"></p>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Value Checker</title>
+    </head>
+    <body>
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Value Checker</title>
+</head>
+<body>
+    <h1>Value Checker</h1>
+    <input type="text" id="inputValue" placeholder="Enter a value" />
+    <button onclick="checkValue()">Check Value</button>
+    <div id="results"></div>
 
-    <div id="result">
-        <p>The result will appear here.</p>
-    </div>
+    <script>
+        function checkValue() {
+            const value = document.getElementById('inputValue').value;
+            let resultHtml = '';
 
-    <p><input type="button" value="CHECK" onclick="check()"></p>
-    <script src="javascript.js"></script>
+            resultHtml += `Primitive Type: ${typeof value}<br>`;
+            resultHtml += `Only Spaces: ${!value.trim()}<br>`;
+            resultHtml += `Is Number: ${!isNaN(value) && value.trim() !== ''}<br>`;
+            resultHtml += `Is Alphabetical: ${/^[a-zA-Z]+$/.test(value)}<br>`;
+            resultHtml += `Is Alphanumeric: ${/^[a-zA-Z0-9]+$/.test(value)}<br>`;
+            resultHtml += `Is Upper Case: ${value === value.toUpperCase()}<br>`;
+            resultHtml += `Is Lower Case: ${value === value.toLowerCase()}<br>`;
+            resultHtml += `Is Capitalized: ${value.charAt(0) === value.charAt(0).toUpperCase() && value.slice(1) === value.slice(1).toLowerCase()}<br>`;
+
+            document.getElementById('results').innerHTML = resultHtml;
+        }
+    </script>
+</body>
+</html>
+
+    </body>
+    </html>
+    
+    
 </body>
 </html>
